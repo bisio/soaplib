@@ -161,7 +161,7 @@ class WSGISoapApp(object):
             
             serviceName = environ['PATH_INFO'].split('/')[-1]
             service = self.getHandler(environ)
-            if (environ['QUERY_STRING'].endswith('wsdl') or environ['PATH_INFO'].endswith('wsdl')) and environ['REQUEST_METHOD'].lower() == 'get':
+            if (environ.get('QUERY_STRING', '').endswith('wsdl') or environ.get('PATH_INFO', '').endswith('wsdl')) and environ.get('REQUEST_METHOD', '').lower() == 'get':
                 # get the wsdl for the service
                 #
                 # Assume path_info matches pattern
